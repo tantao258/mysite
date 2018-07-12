@@ -15,8 +15,8 @@ def login(request):
         # 用户验证
         if username == "tantao258" and password == "910806":
             # return HttpResponse("登陆成功")
-            # return redirect("http://www.baidu.com")     # 跳转网址
-            return render(request, "home.html")           # 跳转模板
+            return redirect("/home")     # 跳转网址
+
         else:
             # render 可以向html中的"error_msg"进行替换
             return render(request, "login.html", {"error_msg": "用户名或密码错误"})
