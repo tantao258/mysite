@@ -21,13 +21,23 @@ def login(request):
             # render 可以向html中的"error_msg"进行替换
             return render(request, "login.html", {"error_msg": "用户名或密码错误"})
 
+USER_LIST = [{"username": "Alex", "email": "125654@163.com", "gender": "男"}]
+for item in range(20):
+    temp = {"username": "Alex" + str(item), "email": "125654@163.com", "gender": "男"}
+    USER_LIST.append(temp)
+
 
 def home(request):
+    if request.method == "GET":
+        return render(request, "home.html", {"user_list": USER_LIST})
+    else:
+        # 获取数据
+        username = request.POST.get("username", None)
+        email = request.POST.get("email", None)
+        gender = request.POST.get("gender", None)
+        add = {"username": username, "email": email, "gender": gender}
+        USER_LIST.append(add)
+        return render(request, "home.html", {"user_list": USER_LIST})
 
-    USER_LIST = [{"username": "Alex", "email": "125654@163.com", "gender": "男"}]
-    for item in range(20):
-        temp = {"username": "Alex" + str(item), "email": "125654@163.com", "gender": "男"}
-        USER_LIST.append(temp)
 
-    return render(request, "home.html", {"user_list": USER_LIST})
 
