@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+</head>
+<body style="margin: 0 auto;">
+    <div>
+        <h3 style="background: aqua; text-align: center; margin: 0 auto">后台管理系统</h3>
+    </div >
+
+    <div style="width: 50%; text-align: center; background: cadetblue; margin: auto">
+        <form action="{% url "i2" %}" method="post">
+            <label for="username" style="text-align: right">用户名：</label>
+            <input type="text" name="username" id="username"/>
+            <br/>
+            <label for="password" style="text-align: right">密&nbsp&nbsp&nbsp码：</label>
+            <input type="password" name="password" id="password"/>
+            <br/>
+            <div>
+                <input type="submit" value="增加" name="add"/>
+                <input type="submit" value="查询" name="query"/>
+                <input type="submit" value="删除" name="delete"/>
+                <input type="submit" value="修改" name="modify"/>
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>

@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'app05_mysql',
 ]
 
 MIDDLEWARE = [
@@ -70,14 +71,27 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
+# https://docs.djangoproject.com/en/2.0/ref/settings/#databases   英文文档
+# http://www.cnblogs.com/wupeiqi/articles/5237704.html   中文文档
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':'dbname',
+        'USER': 'root',
+        'PASSWORD': 'xxx',
+        'HOST': '',
+        'PORT': '',
+    }
+}
+"""
 
 
 # Password validation

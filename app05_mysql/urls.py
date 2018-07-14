@@ -17,5 +17,6 @@ from django.urls import path, include
 from app05_mysql import views
 
 urlpatterns = [
-
+        path('login/', views.login, name="i1"),
+        path('admin/', views.admin, name="i2")
 ]
