@@ -20,7 +20,11 @@ import app02.views as views02
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # FBV --------------------------
     path('login/', views01.login),
+    # CBV
+    path('login/', views01.Login.as_view()),
     path('home/', views01.home),
     path('questionnaire/', views02.questionnaire),
 

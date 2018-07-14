@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 import os
 # Create your views here.
-
+# 获取前端数据的方式
 
 def questionnaire(request):
     if request.method == "GET":
