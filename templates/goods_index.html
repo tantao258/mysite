@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品</title>
+</head>
+<body style="margin: 0 auto">
+    <lu>
+        {% for k,v in goods_info.items %}
+        <li>
+            <a href="/goods_detail-{{ k }}.html">{{ k }}</a>
+        </li>
+        {% endfor %}
+    </lu>
+</body>
+</html>

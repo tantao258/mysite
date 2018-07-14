@@ -24,9 +24,11 @@ urlpatterns = [
     # FBV --------------------------
     path('login/', views01.login),
     # CBV
-    path('login/', views01.Login.as_view()),
+    # path('login/', views01.Login.as_view()),
     path('home/', views01.home),
     path('questionnaire/', views02.questionnaire),
+    path('goods_index/', views01.goods_index),
+    path('goods_detail-(\d+).html', views01.goods_detail),
 
 
 
