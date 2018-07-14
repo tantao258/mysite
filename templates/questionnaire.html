@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>questionnaire</title>
+    <style>
+        .i1{
+            color: black;
+            margin: auto;
+            width: 100%;
+            height: 48px;
+            background: blue;
+            text-align: center;
+            line-height: 48px;
+            font-size: 22px;
+        }
+        .i2{
+            background: #fcfff6;
+            margin: 0 auto;
+            height: 3000px;
+            width: 80%;
+        }
+        input{
+
+        }
+    </style>
+</head>
+<body style="margin: 0 auto">
+    <div>
+        <div class="i1">个人情况问卷调查</div>
+        <form action="/questionnaire/" method="post" enctype="multipart/form-data">
+            <div class="i2">
+                <p>
+                    <label for="name" style="padding-left: 20px">姓名：</label>
+                    <input type="text" name="name" id="name" />
+                </p>
+                <p>
+                    <label for="email" style="padding-left: 20px">邮箱：</label>
+                    <input type="text" name="email" id="email" placeholder="xxx@163.com"/>
+                </p>
+                <p>
+                    <label style="padding-left: 20px">性别：</label>
+                    <label>男</label>
+                    <input type="radio" name="gender" value="1" checked="checked"/>
+                    <label style="padding-left: 40px">女</label>
+                    <input type="radio" name="gender" value="2"/>
+                </p>
+                <p>
+                    <label style="padding-left: 20px">爱好：</label>
+                    <label>旅游</label>
+                    <input type="checkbox" name="hobby" value="1"/>
+                    <label style="padding-left: 20px">运动</label>
+                    <input type="checkbox" name="hobby" value="2"/>
+                    <label style="padding-left: 20px">美食</label>
+                    <input type="checkbox" name="hobby" value="3"/>
+                </p>
+                <p>
+                    <label style="padding-left: 20px">地址：</label>
+                    <select name="city">
+                        <option value="bj">北京</option>
+                        <option value="sh">上海</option>
+                        <option value="cq" selected="selected">重庆</option>
+                    </select>
+                    <select name="area">
+                        <option value="1">江北区</option>
+                        <option value="2">沙坪坝区</option>
+                        <option value="3" selected="selected">渝北区</option>
+                    </select>
+                    <input type="text" name="address" placeholder="具体地址"/>
+                </p>
+                <p>
+                    <label style="padding-left: 20px">请上传相应附件：[上传文件小于2M]</label>
+                    <input type="file" name="filename"/>
+                </p>
+
+
+
+
+
+                <p>
+                   <label style="padding-left: 20px"></label> <input type="submit" value="提交"/>
+                </p>
+
+
+
+
+        </div>
+
+        </form>
+
+
+
+    </div>
+
+</body>
+</html>
