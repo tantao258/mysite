@@ -18,10 +18,11 @@ def questionnaire(request):
 
         # 上传文件  form 标签中设置：enctype="multipart/form-data"
         file = request.FILES.get("filename")   # file 是一个对象
-        # print(file, type(file), file.name)
-        with open(os.path.join("upload", file.name), mode="wb") as f:
-            for i in file.chunks():
-                f.write(i)
+        if file != None:
+            # print(file, type(file), file.name)
+            with open(os.path.join("upload", file.name), mode="wb") as f:
+                for i in file.chunks():
+                    f.write(i)
 
         return HttpResponse("提交成功，谢谢您的配合。")
 
