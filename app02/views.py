@@ -23,7 +23,6 @@ def questionnaire(request):
             for i in file.chunks():
                 f.write(i)
 
-
         return HttpResponse("提交成功，谢谢您的配合。")
 
     else:
