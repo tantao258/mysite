@@ -27,21 +27,5 @@
 
 
     </div>
-
-
-    <!--模板语言中字典循环-->
-    <div style="background: cadetblue; width: 50%">
-        <dl>
-            {% for k, v in goods_info.items %}
-            <dt>{{ k }}</dt>
-                {% for k, v in v.items %}
-                    <dd>
-                    {{ k }}----{{ v }}
-                    </dd>
-                    {% endfor %}
-            {% endfor %}
-        </dl>
-    </div>>
-
 </body>
 </html>
