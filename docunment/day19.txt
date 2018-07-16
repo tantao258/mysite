@@ -278,7 +278,7 @@
 			auto_now           -> 创建时，自动生成时间
 			auto_now_add       -> 更新时，自动更新为当前时间
 			
-				# obj = UserGroup.objects.filter(id=1).update(caption='CEO')
+				# obj = UserGroup.objects.filter(id=1).update(caption='CEO')   更新时间不生效
 				# obj = UserGroup.objects.filter(id=1).first()
 				# obj.caption = "CEO"
 				# obj.save()
