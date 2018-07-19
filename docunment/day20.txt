@@ -210,7 +210,7 @@
 				hobj = models.ForeignKey(to='Host',to_field='nid')
 				aobj = models.ForeignKey(to='Application',to_field='id')
 				
-			# HostToApp.objects.create(hobj_id=1,aobj_id=2)
+			# model.HostToApp.objects.create(hobj_id=1,aobj_id=2)
 				
 				
 				
@@ -254,37 +254,3 @@
 			
 			# 所有相关的主机对象“列表” QuerySet
 			obj.r.all()
-			
-		
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-
-
-		
-		
-		
-		
-		
-		
-		
-		
-		

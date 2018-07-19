@@ -37,22 +37,23 @@ class UserGroup(models.Model):
     group = models.CharField(max_length=16, null=True, db_index=True)
 
 
-# 通过创建类来创建数据库
-# 表名： app05_mysql_userinfo
+# 通过创建类来创建数据库   表名： app05_mysql_userinfo
 class UserInfo(models.Model):
     # 自动创建ID列，自增，主键
     # 用户名列，字符串类型， 指定长度
     username = models.CharField(max_length=32, null=True, db_index=True)
     # 密码，字符串类型， 指定长度
     password = models.CharField(max_length=64, null=True)
+    """
     # 创建时间
-    create_time = models.DateTimeField(auto_now_add=True, null=True)
-    update_time = models.DateTimeField(auto_now=True, null=True)
+    # create_time = models.DateTimeField(auto_now_add=True, null=True)
+    # update_time = models.DateTimeField(auto_now=True, null=True)
     # 年龄， 数字类型，指定长度
     # age = models.IntegerField(max_length=3, null=True)
     # 在已有数据的数据表上增加一列 邮箱
     # email = models.CharField(max_length=60, null=True)
     # 注释掉某一列后更新数据表则删除该字段
+    """
 
     # 外键
     user_group = models.ForeignKey(to="UserGroup", to_field="uid", on_delete=models.CASCADE, default=1)
@@ -61,8 +62,9 @@ class UserInfo(models.Model):
     # user_group  --> UserGroup 的对象(uid, group)
     # 获取数据 usergroup.uid     usergroup.group
 
+class Customer(models.Model):
+    name = models.CharField(max_length=32, null=True, db_index=True)
 
-
-
-
-
+class UserToCustomer(models.Model):
+    uobj = models.ForeignKey(to="UserInfo", to_field="id", on_delete=models.CASCADE)
+    cobj = models.ForeignKey(to="Customer", to_field="id", on_delete=models.CASCADE)

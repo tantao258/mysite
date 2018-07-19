@@ -26,34 +26,58 @@ def admin(request):
         return render(request, "admin.html")
 
     if request.method == "POST":
-        username = request.POST.get("username", None)
-        password = request.POST.get("password", None)
-        operation = request.POST.get("add", None)
 
-        print()
-        # 向数据库增加用户名、密码数据
         if request.POST.get("add", None) == "增加":
-            models.UserInfo.objects.create(username=username, password=password)
+            username = request.POST.get("username", None)
+            password = request.POST.get("password", None)
+            user_group_id = 2
+            cobj_id = 4
+            uobj_id =10
+
+            # models.UserInfo.objects.create(username=username, password=password, user_group_id=user_group_id)
+            models.UserToCustomer.objects.create(cobj_id=cobj_id, uobj_id=uobj_id)
             return HttpResponse("添加成功")
 
         elif request.POST.get("query", None) == "查询":
+            """
+                # obj_list = models.UserInfo.objects.all()    # 查询全部
+                # 查询全部并只取指定字段用value，返回嵌套字典的列表，跨表用 "__"
+                # obj_list = models.UserInfo.objects.all().values("username", "password")
+                # obj_list = models.UserInfo.objects.filter(username="tantao258", password=9108077776)
+                # 返回querySet类型[对象object 的列表]
+                # result = [object(ID, username, password), object(ID, username, password)]
+            """
+            """
+            obj_list = models.UserInfo.objects.filter(username="tantao258")  # 条件查询
+            print(obj_list)
+            for item in obj_list:
+                print(item.id)
+                print(item.username)
+                print(item.password)
+                print(item.user_group_id)
+                print(item.user_group)
+                print(item.user_group.uid)
+                print(item.user_group.group)
+            """
+            obj_list = models.UserToCustomer.objects.filter(cobj_id=4)
+            for obj in obj_list:
+                # print(obj.cobj_id, obj.uobj_id, obj.cobj, obj.uobj)
+                # print(obj.cobj.id)
+                # print(obj.cobj.name)
+                # print("------------------")
+                # print(obj.uobj.id)
+                # print(obj.uobj.username)
+                # print(obj.uobj.password)
+                # print(obj.uobj.user_group_id)
+                # print(obj.uobj.user_group)
+                print(print(obj.uobj.user_group.group))
+                print("==========================================")
 
-            # result = models.UserInfo.objects.all()    # 查询全部
-            # 查询全部并只取指定字段用value，返回嵌套字典的列表，跨表用 "__"
-            # result = models.UserInfo.objects.all().values("username", "password")
-            result = models.UserInfo.objects.filter(username="tantao258")   # 条件查询
-            result = models.UserInfo.objects.filter(username="tantao258", password=9108077776) # and 条件查询
-            # 查询结果返回对象列表
-            # print(len(result))
-            # result = [object(ID, username, password), object(ID, username, password),,object(ID, username, password)]
-            for item in result:
-                print(item.id, item.username, item.password)
             return HttpResponse("查询成功")
 
         elif request.POST.get("delete", None) == "删除":
             # models.UserInfo.objects.all().delete()  # 删除数据表全部
             models.UserInfo.objects.filter(username="tantao258").delete()
-
             return HttpResponse("删除成功")
 
         elif request.POST.get("modify", None) != None:
@@ -61,5 +85,7 @@ def admin(request):
             # models.UserInfo.objects.all().update(password=666666)
             models.UserInfo.objects.filter(id=1).update(password=666666)
             return HttpResponse("修改成功")
+
+
 
 
