@@ -23,6 +23,10 @@ def login(request):
 
 def admin(request):
     if request.method == "GET":
+        # print(request.environ)
+        # for k, v in request.environ.items():
+        #     print(k,v)
+        print(request.environ["HTTP_USER_AGENT"])
         return render(request, "admin.html")
 
     if request.method == "POST":
@@ -85,6 +89,40 @@ def admin(request):
             # models.UserInfo.objects.all().update(password=666666)
             models.UserInfo.objects.filter(id=1).update(password=666666)
             return HttpResponse("修改成功")
+
+
+def user_list(request, pid=1):
+    # http: // 127.0.0.1: 8000 / app05_mysql / user_list /
+    # http: // 127.0.0.1: 8000 / app05_mysql / user_list /?p = 3        GET方式传递字符串参数p=3
+    # http: // 127.0.0.1: 8000 / app05_mysql / user_list /?p =3&q=5     GET方式传递字符串参数p=3， q=5
+    # re_path('user_list/(page=)*(?P<pid>\d*)', views.user_list, name="i3"),  通过正则表达式传递 pid, 并传递给view业务处理函数
+    #                                                                         view函数必须有形参接收
+    # 访问相同的URL, 上面的url GET方式传递字符串参数
+    li = []
+    for i in range(119):
+        li.append(i)
+
+    if request.method == "GET":
+        # pid = request.GET.get("p", 1)         #?p=5
+
+        pid = int(pid)      # 两种提交方式的pid都是str类型。
+        num_one_page = 10   # 每页数量
+        view_list = li[(pid - 1) * num_one_page: pid * num_one_page]
+
+        (quotients, reminder) = divmod(len(li), num_one_page)
+        counter = quotients + 1 if reminder else quotients
+        print(counter)
+        page_list =""
+        for i in range(1, counter + 1):
+            temp = '<a href="/app05_mysql/user_list/page={}">{}</a>'.format(i, i)
+            page_list += temp
+
+
+
+
+    return render(request, "user_list.html", {"li": view_list,
+                                              "page_list": page_list,
+                                              })
 
 
 
