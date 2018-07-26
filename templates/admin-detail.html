@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <style>
+        .operation{
+            margin-left: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body style="margin: 0 auto">
+    <div style="text-align: center; background: #b6cbce; height: 30%">
+        <span style="color: blue">条件定义区：</span><br/>
+        <form action="{% url "i2" %}" method="post">
+            <label for="username">用户：</label> <input id="username" type="text" name="username"/><br/>
+            <label for="password">密码：</label> <input id="password" type="password" name="password"/><br/>
+            <label for="email">邮箱：</label> <input id="email" type="text" name="email"/><br/>
+            <label for="telephone">电话：</label> <input id="telephone" type="text" name="telephone"/><br/>
+            <div style="margin-top: 10px; text-align: center">
+                <input class="operation" type="submit" name="operation" value="增加" />
+                <input class="operation" type="submit" name="operation" value="删除"/>
+                <input class="operation" type="submit" name="operation" value="更新"/>
+                <input class="operation" type="submit" name="operation" value="筛选"/>
+            </div>
+        </form>
+    </div>
+    <div style="height: 30px;background: burlywood; text-align: center; color: red; line-height: 30px">{{ msg }}</div>
+    <div style="height: 70%">
+        <div style="width: 50%; height: 500px; background: aqua; float: left">
+            <div style="text-align: center; font-size: 20px">所有用户信息</div>
+            <div>
+                <table border="1" style="width: 100%">
+                    <thead >
+                        <tr>
+                            <th>用户名</th>
+                            <th>密码</th>
+                            <th>邮箱</th>
+                            <th>电话</th>
+                            <th>权限</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in all_users %}
+                            <tr>
+                                <td>{{ item.username }}</td>
+                                <td>{{ item.password }}</td>
+                                <td>{{ item.email }}</td>
+                                <td>{{ item.telephone }}</td>
+                                <td>{{ item.user_level.level }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        <div style="width: 50%; height: 500px; background: aquamarine; float: right">
+            <div style="text-align: center; font-size: 20px">筛选用户信息</div>
+            <div>
+                <table border="1" style="width: 100%">
+                    <thead >
+                        <tr>
+                            <th>用户名</th>
+                            <th>密码</th>
+                            <th>邮箱</th>
+                            <th>电话</th>
+                            <th>权限</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in filter_users %}
+                            <tr>
+                                <td>{{ item.username }}</td>
+                                <td>{{ item.password }}</td>
+                                <td>{{ item.email }}</td>
+                                <td>{{ item.telephone }}</td>
+                                <td>{{ item.user_level.level }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
