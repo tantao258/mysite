@@ -17,12 +17,15 @@
     </div>
     <div style="width: 100%; height: 64px; background-color: aquamarine">
         <div style="text-align: center">
-            <span style="line-height: 56px;">
-                <input class="search" type="text" name="search" placeholder="找书、找人"/>
-            </span>
-            <span>
-                <input style="height: 30px;" type="submit" name="search" value="搜索"/>
-            </span>
+            <form action="{% url "i1" %}" method="post">
+                <span style="line-height: 56px;">
+                    <input class="search" type="text" name="search_content" placeholder="找书、找人"/>
+                </span>
+                <span>
+                    <input style="height: 30px;" type="submit" name="search" value="搜索"/>
+                </span>
+            </form>
+
         </div>
 
     </div>
