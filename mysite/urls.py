@@ -25,6 +25,7 @@ urlpatterns = [
     path('app04_reg_url/', include('app04_reg_url.urls')),
     path('app05_mysql/', include('app05_mysql.urls')),
     path('background/', include('background.urls')),
+    path('novel_search/', include('novel_search.urls')),
 
 ]
 

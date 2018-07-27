@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'app05_mysql',
     'background',
+    'novel_search',
 ]
 
 MIDDLEWARE = [
@@ -87,10 +88,10 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mysql',
-        'USER': 'root',
-        'PASSWORD': 'Zy0808Tt0806!',
-        'HOST': '127.0.0.1',
+        'NAME': 'mysite',
+        'USER': 'tantao258',
+        'PASSWORD': 'Zy0808Tt0806',
+        'HOST': '182.61.21.98',
         'PORT': '3306',
     }
 }
