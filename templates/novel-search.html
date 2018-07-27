@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Novel-Search</title>
+    <style>
+        .search{
+            width: 25%;
+            height: 24px;
+        }
+    </style>
+
+</head>
+<body style="margin: 0 auto">
+    <div style="background-color: aquamarine; width: 100%; height: 64px;padding-top: 1px">
+        <h3 style="text-align: center">风月小说搜索系统</h3>
+    </div>
+    <div style="width: 100%; height: 64px; background-color: aquamarine">
+        <div style="text-align: center">
+            <span style="line-height: 56px;">
+                <input class="search" type="text" name="search" placeholder="找书、找人"/>
+            </span>
+            <span>
+                <input style="height: 30px;" type="submit" name="search" value="搜索"/>
+            </span>
+        </div>
+
+    </div>
+    <div style="height: 32px;background-color: aquamarine">
+        <span>{{ msg }}</span>
+    </div>
+
+
+
+    <div style="width: 100%; height: 1500px; float: right">
+        {% for book in books %}
+            <span><a href="{{ book.book_url }}" target="_blank">{{ book.book_name }}</a></span>|
+            <span>作者：{{ book.author }}</span>|
+            <span>字数：{{ book.total_words }}</span>|
+            <span>类别：{{ book.category }}</span>|
+            <span>标签：{{ book.tags }}</span>|
+            <span>评论数：{{ book.review_times }}</span>|
+            <span>点击数：{{ book.click_times }}</span>|
+            <span>人气数：{{ book.popularity }}</span>|
+            <span>阅读数：{{ book.read_times }}</span>|
+            <span>收藏数：{{ book.collection_times }}</span>|
+            <br>
+        {% endfor %}
+
+
+
+
+
+
+    </div>
+</body>
+</html>

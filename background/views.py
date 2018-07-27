@@ -48,4 +48,3 @@ def detail(request):
         elif operation == "筛选":
             filter_users = models.UserInfo.objects.filter(username=username)
             return render(request, "admin-detail.html", {"all_users": all_users, "filter_users": filter_users})
-
