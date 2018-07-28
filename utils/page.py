@@ -1,6 +1,12 @@
 import numpy as np
 
 def page(items,current_page, num_one_page):
+    """
+    :param items:   数据库查询得出的query set 对象
+    :param current_page: 当前页
+    :param num_one_page:  每一页的 item 数目
+    :return:  下一页的详细信息字典，包括上一页 ，当前页，下一页，分页信息，下一页item
+    """
     num_items = len(items)        # 总的 item 数量
     num_page = num_items // num_one_page if (num_items % num_one_page) == 0 else (num_items // num_one_page) + 1  # 总的页数
     current_page = current_page if current_page <= num_page else num_page
