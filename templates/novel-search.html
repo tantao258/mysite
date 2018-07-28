@@ -2,66 +2,130 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Novel-Search</title>
+    <title>风阅小说，有你好看</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="bs/css/bootstrap.css">
-    <script src="bs/js/jquery.min.js"></script>
-    <script src="bs/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <!--
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    -->
 
 
-
-    <style>
-        .search{
-            width: 25%;
-            height: 24px;
-        }
-    </style>
 
 </head>
 <body style="margin: 0 auto">
-    <div style="background-color: aquamarine; width: 100%; height: 64px;padding-top: 1px">
-        <h3 style="text-align: center">风月小说搜索系统</h3>
-    </div>
-    <div style="width: 100%; height: 64px; background-color: aquamarine">
-        <div style="text-align: center">
-            <form action="{% url "i1" %}" method="post">
-                <span style="line-height: 56px;">
-                    <input class="search" type="text" name="search_content" placeholder="找书、找人"/>
-                </span>
-                <span>
-                    <input style="height: 30px;" type="submit" name="search" value="搜索"/>
-                </span>
-            </form>
 
+    <div class="row">
+        <div class="col-md-2 col-md-offset-2">
+            <img src="/static/novel_search/logo.png" style="width: 70%; margin-right: 0px">
+        </div>
+        <div class="col-md-7" style="margin-top: 45px">
+            <form class="form-inline">
+                <div class="form-group" style="width: 50%">
+                    <label class="sr-only" for="search_content">search</label>
+                    <input type="text" class="form-control" style="width: 100%" id="search_content" placeholder="书名、作者">
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 30px; margin-left: 10px">
+        <div class="col-md-2" style="position: absolute">
+            <ul class="list-group" style="width: 100%">
+                <li class="list-group-item" style="background-color: #2aabd2">
+                    条件筛选：
+                </li>
+
+                <li class="list-group-item">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="Checkbox1" value="1" name="read_times"> 阅读数
+                    </label>
+                    <br/>
+                    <label class="radio-inline">
+                        <input type="radio" id="Radio1" value="0" name="read_times_oder"> 升序
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" id="Radio2" value="1" name="read_times_oder"> 降序
+                    </label>
+                </li>
+
+                <li class="list-group-item">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="Checkbox2" value="1" name="read_times"> 评论数
+                    </label>
+                    <br/>
+                    <label class="radio-inline">
+                        <input type="radio" id="Radio3" value="0" name="review_times_oder"> 升序
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" id="Radio4" value="1" name="review_times_oder"> 降序
+                    </label>
+                </li>
+
+                <li class="list-group-item">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="Checkbox3" value="1" name="read_times"> 收藏数
+                    </label>
+                    <br/>
+                    <label class="radio-inline">
+                        <input type="radio" id="Radio5" value="0" name="collection_times_oder"> 升序
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" id="Radio6" value="1" name="collection_times_oder"> 降序
+                    </label>
+                </li>
+
+                <li class="list-group-item">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="Checkbox4" value="1" name="read_times"> 点击数
+                    </label>
+                    <br/>
+                    <label class="radio-inline">
+                        <input type="radio" id="Radio7" value="0" name="click_times_oder"> 升序
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" id="Radio8" value="1" name="click_times_oder"> 降序
+                    </label>
+                </li>
+
+                <li class="list-group-item">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="Checkbox5" value="1" name="popularity"> 人气
+                    </label>
+                    <br/>
+                    <label class="radio-inline">
+                        <input type="radio" id="Radio9" value="0" name="poularity_oder"> 升序
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" id="Radio10" value="1" name="popularity_oder"> 降序
+                    </label>
+                </li>
+
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-7">
+                            <button type="submit" class="btn btn-default" name="sort" value="1">排序</button>
+                        </div>
+                    </div>
+
+                </li>
+
+            </ul>
         </div>
 
+        <div class="col-md-7 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                Basic panel example
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-3"></div>
     </div>
-    <div style="height: 32px;background-color: aquamarine">
-        <span>{{ msg }}</span>
-    </div>
 
 
-
-    <div style="width: 100%; height: 1500px; float: right">
-        {% for book in books %}
-            <span><a href="{{ book.book_url }}" target="_blank">{{ book.book_name }}</a></span>|
-            <span>作者：{{ book.author }}</span>|
-            <span>字数：{{ book.total_words }}</span>|
-            <span>类别：{{ book.category }}</span>|
-            <span>标签：{{ book.tags }}</span>|
-            <span>评论数：{{ book.review_times }}</span>|
-            <span>点击数：{{ book.click_times }}</span>|
-            <span>人气数：{{ book.popularity }}</span>|
-            <span>阅读数：{{ book.read_times }}</span>|
-            <span>收藏数：{{ book.collection_times }}</span>|
-            <br>
-        {% endfor %}
-
-
-
-
-
-
-    </div>
 </body>
 </html>
