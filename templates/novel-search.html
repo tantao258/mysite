@@ -32,7 +32,7 @@
         </div>
     </div>
     <div class="row" style="margin-top: 30px; margin-left: 10px">
-        <div class="col-md-2" style="position: absolute">
+        <div class="col-md-2" style="position: fixed">
             <ul class="list-group" style="width: 100%">
                 <li class="list-group-item" style="background-color: #2aabd2">
                     条件筛选：
@@ -116,13 +116,66 @@
         </div>
 
         <div class="col-md-7 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                Basic panel example
+            <div class="panel-default ">
+                    {% for book in books %}
+                        <div class="row list-group-item">
+                            <div class="col-md-2" style="margin-right: 0">
+                                <a href="{{ book.book_url }}" target="_blank">
+                                    <img src="{{ book.image }}" class="img-rounded" style="width: 80%">
+                                </a>
+                            </div>
+
+                            <div class="col-md-10">
+                                <h4 class="list-group">
+                                    <a href="{{ book.book_url }}">
+                                        <strong>{{ book.book_name }}</strong>
+                                    </a>
+                                    <small>&nbsp&nbsp&nbsp&nbsp{{ book.author }}&nbsp著</small>
+                                </h4>
+
+                                <p class="list-group">
+                                    <sapn class="label label-info">类别：{{ book.category }}</sapn>
+                                    <sapn class="label label-primary">字数：{{ book.total_words}}</sapn>
+                                    <sapn class="label label-success">阅读：{{ book.read_times }}</sapn>
+                                    <sapn class="label label-warning">点击{{ book.click_times }}</sapn>
+                                    <sapn class="label label-primary">评论：{{ book.review_times }}</sapn>
+                                    <sapn class="label label-info">收藏：{{ book.collection_times }}</sapn>
+                                </p>
+
+                            </div>
+                        </div>
+                    {% endfor %}
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-md-offset-4">
+                    <nav aria-label="Page navigation">
+                <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+              </ul>
+            </nav>
                 </div>
             </div>
 
+
         </div>
+
+
+
         <div class="col-md-3"></div>
     </div>
 
