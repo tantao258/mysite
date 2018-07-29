@@ -11,10 +11,8 @@ def novel_index(request):
             filter = request.GET.get("filter", None)
             sort_direction = request.GET.get("sort_direction", None)
             if filter is not None:
-                if sort_direction == "0":
-                    books = models.NovelInfo.objects.order_by(filter)
-                elif sort_direction == "1":
-                    books = models.NovelInfo.objects.order_by("-" + filter)
+                sort_url = "/novel_research/?filter={}&sort_direction={}".format(filter, sort_direction)
+                return redirect(sort_url)
 
         elif operation == "search":
             search_content = request.GET.get("search_content", None)
