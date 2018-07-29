@@ -22,102 +22,106 @@
             <img src="/static/novel_search/logo.png" style="width: 70%; margin-right: 0px">
         </div>
         <div class="col-md-7" style="margin-top: 45px">
-            <form class="form-inline">
+            <form class="form-inline" action="{% url "novel_index" %}" method="get">
                 <div class="form-group" style="width: 50%">
                     <label class="sr-only" for="search_content">search</label>
-                    <input type="text" class="form-control" style="width: 100%" id="search_content" placeholder="书名、作者">
+                    <input type="text" class="form-control" style="width: 100%" id="search_content" placeholder="书名、作者" name="search_content">
                 </div>
-                <button type="submit" class="btn btn-default">搜索</button>
+                <button type="submit" class="btn btn-default" name="operation" value="search">搜索</button>
             </form>
         </div>
     </div>
     <div class="row" style="margin-top: 30px; margin-left: 10px">
+
         <div class="col-md-2" style="position: fixed">
-            <ul class="list-group" style="width: 100%">
-                <li class="list-group-item" style="background-color: #2aabd2">
-                    条件筛选：
-                </li>
+            <form action="{% url "novel_index" %}" method="get">
+                <ul class="list-group" style="width: 100%">
+                    <li class="list-group-item" style="background-color: #2aabd2">
+                        条件筛选：
+                    </li>
 
-                <li class="list-group-item">
-                    <label class="checkbox-inline">
-                        <input type="checkbox" id="Checkbox1" value="1" name="read_times"> 阅读数
-                    </label>
-                    <br/>
-                    <label class="radio-inline">
-                        <input type="radio" id="Radio1" value="0" name="read_times_oder"> 升序
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" id="Radio2" value="1" name="read_times_oder"> 降序
-                    </label>
-                </li>
+                    <li class="list-group-item">
+                        <label class="radio-inline">
+                            <input type="radio" id="Radio1" value="read_times" name="filter"> 阅读数
+                        </label>
+                        <br/>
+                        <label class="radio-inline">
+                            <input type="radio" id="Radio2" value="0" name="sort_direction"> 升序
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" id="Radio3" value="1" name="sort_direction"> 降序
+                        </label>
+                    </li>
 
-                <li class="list-group-item">
-                    <label class="checkbox-inline">
-                        <input type="checkbox" id="Checkbox2" value="1" name="read_times"> 评论数
-                    </label>
-                    <br/>
-                    <label class="radio-inline">
-                        <input type="radio" id="Radio3" value="0" name="review_times_oder"> 升序
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" id="Radio4" value="1" name="review_times_oder"> 降序
-                    </label>
-                </li>
+                    <li class="list-group-item">
+                        <label class="radio-inline">
+                            <input type="radio" id="Radio4" value="review_times" name="filter"> 评论数
+                        </label>
+                        <br/>
+                        <label class="radio-inline">
+                            <input type="radio" id="Radio5" value="0" name="sort_direction"> 升序
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" id="Radio6" value="1" name="sort_direction"> 降序
+                        </label>
+                    </li>
 
-                <li class="list-group-item">
-                    <label class="checkbox-inline">
-                        <input type="checkbox" id="Checkbox3" value="1" name="read_times"> 收藏数
-                    </label>
-                    <br/>
-                    <label class="radio-inline">
-                        <input type="radio" id="Radio5" value="0" name="collection_times_oder"> 升序
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" id="Radio6" value="1" name="collection_times_oder"> 降序
-                    </label>
-                </li>
+                    <li class="list-group-item">
+                        <label class="radio-inline">
+                            <input type="radio" id="Radio7" value="collection_times" name="filter"> 收藏数
+                        </label>
+                        <br/>
+                        <label class="radio-inline">
+                            <input type="radio" id="Radio8" value="0" name="sort_direction"> 升序
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" id="Radio9" value="1" name="sort_direction"> 降序
+                        </label>
+                    </li>
 
-                <li class="list-group-item">
-                    <label class="checkbox-inline">
-                        <input type="checkbox" id="Checkbox4" value="1" name="read_times"> 点击数
-                    </label>
-                    <br/>
-                    <label class="radio-inline">
-                        <input type="radio" id="Radio7" value="0" name="click_times_oder"> 升序
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" id="Radio8" value="1" name="click_times_oder"> 降序
-                    </label>
-                </li>
+                    <li class="list-group-item">
+                        <label class="radio-inline">
+                            <input type="radio" id="Radio10" value="click_times" name="filter"> 点击数
+                        </label>
+                        <br/>
+                        <label class="radio-inline">
+                            <input type="radio" id="Radio11" value="0" name="sort_direction"> 升序
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" id="Radio12" value="1" name="sort_direction"> 降序
+                        </label>
+                    </li>
 
-                <li class="list-group-item">
-                    <label class="checkbox-inline">
-                        <input type="checkbox" id="Checkbox5" value="1" name="popularity"> 人气
-                    </label>
-                    <br/>
-                    <label class="radio-inline">
-                        <input type="radio" id="Radio9" value="0" name="poularity_oder"> 升序
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" id="Radio10" value="1" name="popularity_oder"> 降序
-                    </label>
-                </li>
+                    <li class="list-group-item">
+                        <label class="radio-inline">
+                            <input type="radio" id="Radio13" value="popularity" name="filter"> 人气
+                        </label>
+                        <br/>
+                        <label class="radio-inline">
+                            <input type="radio" id="Radio14" value="0" name="sort_direction"> 升序
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" id="Radio15" value="1" name="sort_direction"> 降序
+                        </label>
+                    </li>
 
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-md-3 col-md-offset-7">
-                            <button type="submit" class="btn btn-default" name="sort" value="1">排序</button>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-3 col-md-offset-7">
+                                <button type="submit" class="btn btn-default" name="operation" value="sort">排序</button>
+                            </div>
                         </div>
-                    </div>
 
-                </li>
+                    </li>
 
-            </ul>
+                </ul>
+            </form>
+
         </div>
 
         <div class="col-md-7 col-md-offset-2">
             <div class="panel-default ">
-                    {% for book in books %}
+                    {% for book in next_page_info.page_item %}
                         <div class="row list-group-item">
                             <div class="col-md-2" style="margin-right: 0">
                                 <a href="{{ book.book_url }}" target="_blank">
@@ -156,12 +160,13 @@
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
+                {% for page in next_page_info.page_list %}
+                    <li>
+                        <a href="{% url "novel_index" page %}">{{ page }}</a>
+                    </li>
+                {% endfor %}
                 <li>
+
                     <a href="#" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
@@ -179,6 +184,7 @@
         <div class="col-md-3"></div>
     </div>
 
-
 </body>
+
+
 </html>
