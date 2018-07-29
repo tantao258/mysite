@@ -19,6 +19,7 @@ from novel_search import views
 urlpatterns = [
         path('novel_index.html/', views.novel_index, name="novel_index"),
 
-        re_path('novel_search.html/filter=(?P<nid>\d+)&sort_direction=(?P<uid>\d+)&sort=(?P<pid>\d+)',
-                views.novel_sorted, name="novel_sorted"),
+        re_path('novel_sort=(?P<nid>\d+)_(?P<uid>\d+)&page=(?P<page_id>\d+)/',
+                views.novel_sorted,
+                name="novel_sorted"),
 ]

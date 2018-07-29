@@ -21,7 +21,7 @@
         <div class="col-md-2 col-md-offset-2">
             <img src="/static/novel_search/logo.png" style="width: 70%; margin-right: 0px">
         </div>
-        <div class="col-md-7" style="margin-top: 45px">
+        <div class="col-md-7" style="margin-top: 70px">
             <form class="form-inline" action="{% url "novel_index" %}" method="get">
                 <div class="form-group" style="width: 50%">
                     <label class="sr-only" for="search_content">search</label>
@@ -34,88 +34,70 @@
     <div class="row" style="margin-top: 30px; margin-left: 10px">
 
         <div class="col-md-2" style="position: fixed">
-            <form action="{% url "novel_index" %}" method="get">
-                <ul class="list-group" style="width: 100%">
+            <ul class="list-group" style="width: 100%">
                     <li class="list-group-item" style="background-color: #2aabd2">
                         条件筛选：
                     </li>
+                    <li class="list-group-item">
+                        站点来源
+                    </li>
+                    <li class="list-group-item">
+                        阅读次数
+                    </li>
+                    <li class="list-group-item">
+                        评论次数
+                    </li>
+                    <li class="list-group-item">
+                        收藏次数
+                    </li>
+                    <li class="list-group-item">
+                        点击次数
+                    </li>
+                    <li class="list-group-item">
+                        综合人气
+                    </li>
+
+
+
+                    <li class="list-group-item" style="background-color: #2aabd2">
+                        排序：
+                    </li>
 
                     <li class="list-group-item">
-                        <label class="radio-inline">
-                            <input type="radio" id="Radio1" value="read_times" name="filter"> 阅读数
+                        <label onclick="sort()">
+                             <button id="read" value="1">阅读</button>
+                        </label>
+
+                        <span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+                        <label onclick="sort()">
+                            <button id="review" value="2">评论</button>
                         </label>
                         <br/>
-                        <label class="radio-inline">
-                            <input type="radio" id="Radio2" value="0" name="sort_direction"> 升序
+                       <label onclick="sort()">
+                            <button id="collection" value="3"> 收藏</button>
                         </label>
-                        <label class="radio-inline">
-                            <input type="radio" id="Radio3" value="1" name="sort_direction"> 降序
-                        </label>
-                    </li>
-
-                    <li class="list-group-item">
-                        <label class="radio-inline">
-                            <input type="radio" id="Radio4" value="review_times" name="filter"> 评论数
+                        <span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+                        <label onclick="sort()">
+                            <button id="click" value="4">点击</button>
                         </label>
                         <br/>
-                        <label class="radio-inline">
-                            <input type="radio" id="Radio5" value="0" name="sort_direction"> 升序
+                        <label onclick="sort()">
+                            <button id="popularity" value="5">人气</button>
                         </label>
-                        <label class="radio-inline">
-                            <input type="radio" id="Radio6" value="1" name="sort_direction"> 降序
-                        </label>
+                        <span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
                     </li>
+
 
                     <li class="list-group-item">
-                        <label class="radio-inline">
-                            <input type="radio" id="Radio7" value="collection_times" name="filter"> 收藏数
+                        <label onclick="sort_down()">
+                            <button id="down" value="1">降序</button>
                         </label>
-                        <br/>
-                        <label class="radio-inline">
-                            <input type="radio" id="Radio8" value="0" name="sort_direction"> 升序
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" id="Radio9" value="1" name="sort_direction"> 降序
+                        <span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+                        <label onclick="sort_up()">
+                            <button id="up" value="0">升序</button>
                         </label>
                     </li>
-
-                    <li class="list-group-item">
-                        <label class="radio-inline">
-                            <input type="radio" id="Radio10" value="click_times" name="filter"> 点击数
-                        </label>
-                        <br/>
-                        <label class="radio-inline">
-                            <input type="radio" id="Radio11" value="0" name="sort_direction"> 升序
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" id="Radio12" value="1" name="sort_direction"> 降序
-                        </label>
-                    </li>
-
-                    <li class="list-group-item">
-                        <label class="radio-inline">
-                            <input type="radio" id="Radio13" value="popularity" name="filter"> 人气
-                        </label>
-                        <br/>
-                        <label class="radio-inline">
-                            <input type="radio" id="Radio14" value="0" name="sort_direction"> 升序
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" id="Radio15" value="1" name="sort_direction"> 降序
-                        </label>
-                    </li>
-
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-md-3 col-md-offset-7">
-                                <button type="submit" class="btn btn-default" name="operation" value="sort">排序</button>
-                            </div>
-                        </div>
-
-                    </li>
-
                 </ul>
-            </form>
 
         </div>
 
@@ -180,9 +162,22 @@
         </div>
 
 
-
         <div class="col-md-3"></div>
     </div>
+
+    <script>
+        function sort_down() {
+            var url = "/novel_search/" + "novel_sort=" + document.getElementById("click").value + "_"  + document.getElementById("down").value + "&page=" + "1";
+            window.location = url
+        }
+        function sort_up() {
+            var url = "/novel_search/" + "novel_sort=" + document.getElementById("click").value + "_"  + document.getElementById("up").value + "&page=" + "1";
+            window.location = url
+        }
+
+
+
+    </script>
 
 </body>
 
