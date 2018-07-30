@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.schemas import get_schema_view
+
 
 urlpatterns = [
     # 路由分发
@@ -25,6 +27,7 @@ urlpatterns = [
     path('app04_reg_url/', include('app04_reg_url.urls')),
     path('app05_mysql/', include('app05_mysql.urls')),
     path('background/', include('background.urls')),
+    path('docs/', get_schema_view())
 
 ]
 
