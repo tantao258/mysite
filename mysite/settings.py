@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'app05_mysql',
     'background',
-    'novel_search',
 ]
 
 MIDDLEWARE = [
